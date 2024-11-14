@@ -8,14 +8,14 @@
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
-            background-image: url('https://example.com/christmas-background.jpg'); /* Replace with a real Christmas background URL */
+            background-image: url('https://example.com/christmas-background.jpg'); 
             background-size: cover;
             color: white;
         }
 
         h1, h2 {
-            color: #ffdfba; /* Light Christmas gold */
-            text-shadow: 2px 2px 4px #b22222; /* Dark red shadow */
+            color: #ffdfba; 
+            text-shadow: 2px 2px 4px #b22222; 
         }
 
         #container {
@@ -36,18 +36,18 @@
         }
 
         button {
-            background-color: #b22222; /* Christmas red */
+            background-color: #b22222; 
             color: white;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
-            background-color: #ff6347; /* Brighter red on hover */
+            background-color: #ff6347; 
         }
 
         #nameSelect {
-            background-color: #228b22; /* Christmas green */
+            background-color: #228b22; 
             color: white;
         }
 
@@ -55,7 +55,7 @@
             margin-top: 20px;
         }
 
-        /* Festive Animation */
+        
         .snowflake {
             color: #ffdfba;
             font-size: 2em;
@@ -70,14 +70,14 @@
         }
     </style>
     <script>
-        // Array of names (Jenny won't be picked randomly)
+        
         const names = ["Kurt", "Jenny", "Lyza"];
-        let yourName = "";  // Variable to store your chosen name
+        let yourName = "";  
 
         function selectYourName() {
-            // Get the selected name from the dropdown
+            
             const selectedName = document.getElementById("nameSelect").value;
-            // Store it as your name
+            
             yourName = selectedName;
 
             if (yourName) {
@@ -94,9 +94,9 @@
 
             let pickedName = "";
             do {
-                // Shuffle the array of names
+                
                 const shuffledNames = names.sort(() => Math.random() - 0.5);
-                // Pick the first name from the shuffled array
+                
                 pickedName = shuffledNames[0];
             } while (pickedName === "Jenny");
 
@@ -104,14 +104,14 @@
                 alert("🎅 You picked your name (" + pickedName + ") again! Try again. ❄️");
             } else {
                 alert("🎄 You picked " + pickedName + "! The game is over. 🎁");
-                // Disable the button after picking a name that's not your own
+                
                 document.querySelector('#randomPickerSection button').disabled = true;
             }
         }
     </script>
 </head>
 <body>
-    <!-- Festive Snowflakes -->
+    
     <div class="snowflake" style="left: 20%;">❄️</div>
     <div class="snowflake" style="left: 40%;">❄️</div>
     <div class="snowflake" style="left: 60%;">❄️</div>

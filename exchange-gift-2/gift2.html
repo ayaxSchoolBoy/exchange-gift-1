@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Name Picker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-image: url('https://example.com/christmas-background.jpg'); /* Replace with a real Christmas background URL */
+            background-size: cover;
+            color: white;
+        }
+
+        h1, h2 {
+            color: #ffdfba; /* Light Christmas gold */
+            text-shadow: 2px 2px 4px #b22222; /* Dark red shadow */
+        }
+
+        #container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 50px;
+        }
+
+        select, button {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background-color: #b22222; /* Christmas red */
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #ff6347; /* Brighter red on hover */
+        }
+
+        #nameSelect {
+            background-color: #228b22; /* Christmas green */
+            color: white;
+        }
+
+        #randomPickerSection {
+            margin-top: 20px;
+        }
+
+        /* Festive Animation */
+        .snowflake {
+            color: #ffdfba;
+            font-size: 2em;
+            position: absolute;
+            top: -10%;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; left: random(-10%, 110%); }
+            100% { top: 110%; left: random(-10%, 110%); }
+        }
+    </style>
+    <script>
+        // Array of names (Kurt will not be picked randomly)
+        const names = ["Kurt", "Jenny", "Lyza"];
+        let yourName = "";  // Variable to store your chosen name
+
+        function selectYourName() {
+            // Get the selected name from the dropdown
+            const selectedName = document.getElementById("nameSelect").value;
+            // Store it as your name
+            yourName = selectedName;
+
+            if (yourName) {
+                alert("🎄 You selected your name: " + yourName + ". Now, pick a random name! 🎅");
+                document.getElementById("randomPickerSection").style.display = "block";
+            }
+        }
+
+        function pickRandomName() {
+            if (!yourName) {
+                alert("Please select your name first.");
+                return;
+            }
+
+            let pickedName = "";
+            do {
+                // Shuffle the array of names
+                const shuffledNames = names.sort(() => Math.random() - 0.5);
+                // Pick the first name from the shuffled array
+                pickedName = shuffledNames[0];
+            } while (pickedName === "Kurt"); // Keep picking until it's not "Kurt"
+
+            if (pickedName === yourName) {
+                alert("🎅 You picked your name (" + pickedName + ") again! Try again. ❄️");
+            } else {
+                alert("🎄 You picked " + pickedName + "! The game is over. 🎁");
+                // Disable the button after picking a name that's not your own
+                document.querySelector('#randomPickerSection button').disabled = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Festive Snowflakes -->
+    <div class="snowflake" style="left: 20%;">❄️</div>
+    <div class="snowflake" style="left: 40%;">❄️</div>
+    <div class="snowflake" style="left: 60%;">❄️</div>
+    <div class="snowflake" style="left: 80%;">❄️</div>
+
+    <div id="container">
+        <h1>🎅 Christmas Name Picker 🎄</h1>
+        <label for="nameSelect">Choose your name:</label>
+        <select id="nameSelect">
+            <option value="" disabled selected>Select your name</option>
+            <option value="Kurt">Kurt</option>
+            <option value="Jenny">Jenny</option>
+            <option value="Lyza">Lyza</option>
+        </select>
+        <button onclick="selectYourName()">Submit</button>
+
+        <div id="randomPickerSection" style="display:none;">
+            <h2>🎁 Pick a Random Name 🎁</h2>
+            <button onclick="pickRandomName()">Pick a Random Name</button>
+        </div>
+    </div>
+</body>
+</html>

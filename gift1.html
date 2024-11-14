@@ -103,7 +103,9 @@
             if (pickedName === yourName) {
                 alert("🎅 You picked your name (" + pickedName + ") again! Try again. ❄️");
             } else {
-                alert("🎄 You picked " + pickedName + "! Great choice! 🎁");
+                alert("🎄 You picked " + pickedName + "! The game is over. 🎁");
+                // Disable the button after picking a name that's not your own
+                document.querySelector('#randomPickerSection button').disabled = true;
             }
         }
     </script>
